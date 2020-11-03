@@ -6,20 +6,15 @@ $registros = array();
 while($fila = $result->fetch_array()){
 	  $registros[] = $fila;
 }
-/*echo "<pre>";
-var_dump($registros);
-echo "</pre>";*/
+require_once('librerias/cabe.php');
  ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<h1>Listado de Productos</h1>
-	<a href="editar.php">Nuevo</a>
-	<table border="1">
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h1>Listado de Productos</h1>
+			<p><a href="editar.php" class="btn btn-success">Nuevo</a></p>
+	
+	<table class="table table-striped table-dark" >
 		<tr>
 			<th>No.</th>
 			<th>Nombre</th>
@@ -35,10 +30,15 @@ echo "</pre>";*/
 			<td><?= $item["nombre"] ?></td>
 			<td><?= $item["precio"] ?></td>
 			<td><?= $item["stock"] ?></td>
-			<td><a href="editar.php?id=<?= $item['id']?>">Editar</a></td>
-			<td><a href="eliminar.php?id=<?= $item["id"]?>" onclick="return(confirm ('eliminamos??'))">Eliminar</a></td>
+			<td><a href="editar.php?id=<?= $item['id']?>" class="btn btn-primary">Editar</a></td>
+			<td><a href="eliminar.php?id=<?= $item["id"]?>" onclick="return(confirm ('eliminamos??'))" class="btn btn-danger">Eliminar</a></td>
 		</tr>
 		<?php endforeach ?>
 	</table>
-</body>
-</html>
+		</div>
+	</div>
+</div>
+	
+<?php 
+require_once('librerias/pie.php');
+ ?>
